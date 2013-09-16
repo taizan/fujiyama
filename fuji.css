@@ -1,0 +1,83 @@
+
+
+body {
+    background: url(images/wp08_1600.jpg);
+    -moz-background-size:100% 100%;
+    background-size:100% 100%;
+}
+
+#main {
+    position: relative;
+    height: 900px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background:white;
+}
+
+#display {
+    position:absolute;
+    width: 950px;
+    height:100%;
+}
+
+#mt_fuji {
+    position:absolute;
+    bottom:0;
+    height:500px;
+    width:100%;
+}
+
+#counter {
+    position:absolute;
+    bottom:550px;
+    right:95px;
+}
+
+.mountain {
+    position:absolute;
+    bottom:0;
+}
+
+#red_gage {
+    position:absolute;
+    bottom:0;
+    overflow: hidden;
+    height:0%;
+    width:100%;
+}
+
+#menu_pane {
+    position:absolute;
+    top:0;
+    left:939px;
+    background:url(images/washi.jpg);
+    width:256px;
+    height:100%;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    width:90%;
+    height:64px;
+    vertical-align:central;
+    margin:1px;
+    background-color:white;
+    
+}
+
+.menu li:hover{
+    color:#0026ff;
+}
+
+
+.visiter {
+    position:absolute;
+    left:0;
+    bottom:80px;
+    z-index:1;
+    cursor:pointer;
+}
