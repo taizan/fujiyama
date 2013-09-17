@@ -28,6 +28,13 @@ body {
     width:100%;
 }
 
+#hunka {
+    position:absolute;
+    bottom:480px;
+    width:100%;
+    display:none;
+}
+
 #counter {
     position:absolute;
     bottom:550px;
@@ -61,12 +68,26 @@ body {
 }
 
 .menu li {
+    position:relative;
     width:90%;
     height:64px;
-    vertical-align:central;
     margin:1px;
     background-color:white;
     
+}
+
+.menu li img {
+    position:absolute;
+    left:0;
+}
+
+.menu li .text {
+    position:absolute;
+    left:64px;
+    width:120px;
+}
+.text .num{
+    right: 0;
 }
 
 .menu li:hover{
