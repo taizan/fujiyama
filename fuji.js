@@ -1,4 +1,4 @@
-$(window).load(function () {
+﻿$(window).load(function () {
     moves = function (obj, speed) {
         //for (; ;) {
         $(obj)

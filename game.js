@@ -1,4 +1,4 @@
-Game= function(){
+ÔªøGame= function(){
     game = this;
     loop = this.loop;
     setInterval(loop, 1000);
@@ -45,8 +45,8 @@ Game.prototype = {
     add_visiter : function (n) {
         game.visited += n;
         game.visiting += n;
-        $("#num").html(game.visiting + "êlÅAÇ≤óàñK");
-        $("#ps").html(game.visit_ps + "êl/ì˙(s)");
+        $("#num").html(game.visiting + "‰∫∫„ÄÅ„ÅîÊù•Ë®™");
+        $("#ps").html(game.visit_ps + "‰∫∫/Êó•(s)");
         
         if (this.visiting > this.voltage) {
             game.hunka();
@@ -84,7 +84,7 @@ building = function($el,pt,price){
     this.n = 0;
     var self = this;
 
-    $(".price" , self.el).html(self.price+"êlóÕ");
+    $(".price" , self.el).html(self.price+"‰∫∫Âäõ");
     $(".num" , self.el).html(self.n);
 
     $(this.el).click(function(){
@@ -92,7 +92,7 @@ building = function($el,pt,price){
             game.visiting -= self.price;
             self.n+=1;
             game.visit_ps += self.pt;
-            $(".price" , self.el).html(self.price+"êlóÕ");
+            $(".price" , self.el).html(self.price+"‰∫∫Âäõ");
             $(".num" , self.el).html(self.n);
         }
     });
