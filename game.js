@@ -2,14 +2,14 @@
     game = this;
     loop = this.loop;
     setInterval(loop, 1000);
-    b = [];
-    b[0] = new building($(".menu li")[0], 1, 10);
-    b[1] = new building($(".menu li")[1], 2, 100);
-    b[2] = new building($(".menu li")[2], 5, 500);
-    b[3] = new building($(".menu li")[3], 10, 1000);
-    b[4] = new building($(".menu li")[4], 20, 3000);
-    b[5] = new building($(".menu li")[5], 40, 10000);
-    b[6] = new building($(".menu li")[6], 100, 100000);
+    this.build = [];
+    this.build[0] = new building($(".menu li")[0], 1, 10);
+    this.build[1] = new building($(".menu li")[1], 5, 100);
+    this.build[2] = new building($(".menu li")[2], 15, 500);
+    this.build[3] = new building($(".menu li")[3], 50, 1000);
+    this.build[4] = new building($(".menu li")[4], 200, 3000);
+    this.build[5] = new building($(".menu li")[5], 500, 10000);
+    this.build[6] = new building($(".menu li")[6], 10000, 200000);
     
 }
 
@@ -31,7 +31,7 @@ Game.prototype = {
     },
 
     set_visiter: function () {
-        $('<img class="visiter" src="images/visiter.gif">')
+        var man = $('<img class="visiter" src="images/visiter.gif">')
             .appendTo("#display")
             .show().css({ left: "0", bottom: "80px" })
             .animate({ left: "240", bottom: "147px" }, "slow")
@@ -39,7 +39,10 @@ Game.prototype = {
             .animate({ left: "560", bottom: "388px" }, "slow")
             .animate({ left: "647", bottom: "496px" }, "slow")
             .animate({ left: "685", bottom: "496px" }, "fast")
-            .hide("bounce", {}, "fast", function () { game.add_visiter(1); });
+            .hide("bounce", {}, "fast", function () {
+                game.add_visiter(1);
+                $(man).remove();
+            });
     },
 
     add_visiter : function (n) {
@@ -53,7 +56,16 @@ Game.prototype = {
             game.visiting = 0;
             game.voltage *= 2;
         }
-        $("#red_gage").css({ height: 100 * game.visiting / game.voltage + "%" })
+        $("#red_gage").css({ height: 100 * game.visiting / game.voltage + "%" });
+
+        //買い物
+        for (var i = 0 ; i < game.build.length; i++) {
+            if (game.visiting < game.build[i].price) {
+                $(game.build[i].el).css({ opacity: 0.5 });
+            } else {
+                $(game.build[i].el).css({ opacity: 1 });
+            }
+        }
     },
 
     hunka : function(){
@@ -64,13 +76,16 @@ Game.prototype = {
 
     loop: function () {
         game.update();
+
+        //噴火消える
         if (game.volting > 0) {
             game.volting -= 1;
         } else if(game.volting == 0){
             $("#hunka").hide("slow");
             game.volting -= 1;
         }
-        console.log( game.volting);
+        //console.log(game.volting);
+       
     }
 
     
@@ -90,8 +105,10 @@ building = function($el,pt,price){
     $(this.el).click(function(){
         if(game.visiting >= self.price ){
             game.visiting -= self.price;
-            self.n+=1;
+            self.price = Math.floor(self.price *1.2);
+            self.n += 1;
             game.visit_ps += self.pt;
+
             $(".price" , self.el).html(self.price+"人力");
             $(".num" , self.el).html(self.n);
         }

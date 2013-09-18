@@ -73,7 +73,8 @@ body {
     height:64px;
     margin:1px;
     background-color:white;
-    
+    opacity: 0.5;
+    cursor:pointer;
 }
 
 .menu li img {
